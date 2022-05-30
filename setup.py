@@ -5,13 +5,13 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nomquamgender",
-    version="0.0.3",
+    version="0.0.4",
     author="Ian Van Buskirk",
     author_email="ian@colorado.edu",
     description="Data and code to support name-based gender-classification in scientific research",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    # url="https://github.com/pypa/sampleproject",
+    url="https://github.com/ianvanbuskirk/nomquamgender",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
