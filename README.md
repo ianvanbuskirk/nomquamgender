@@ -18,6 +18,7 @@ nqg.annotate('clara')
 |    | given   | used   |   sources |   counts |   p(f) |
 |---:|:--------|:-------|----------:|---------:|-------:|
 |  0 | clara   | clara  |        31 |   492337 |  0.992 |
+---
 
 ```python
 nqg.annotate(['András','Jean','Mitsuko'])
@@ -28,9 +29,11 @@ nqg.annotate(['András','Jean','Mitsuko'])
 |  0 | András  | andras  |        24 |    13010 |  0.001 |
 |  1 | Jean    | jean    |        31 |  2525377 |  0.477 |
 |  2 | Mitsuko | mitsuko |        14 |      925 |  0.981 |
+---
 
 ```python
 import pandas as pd
+
 name_data = nqg.dump()
 
 df = pd.DataFrame([(n,c,p) for n,(s,c,p) in name_data.items()],
