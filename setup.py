@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="nomquamgender",
-    version="0.0.4",
+    version="0.0.6",
     author="Ian Van Buskirk",
     author_email="ian@colorado.edu",
     description="Data and code to support name-based gender-classification in scientific research",
