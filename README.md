@@ -1,16 +1,20 @@
-# nomquamgender
+# nomquamgender (nqg)
 
 A simple package containing data and a few functions to support name-based gender-classification in scientific research.
 
 Conceptually, this method of classification does not reflect gender _identity_, _expression_ or a _perception_ of either but a structural dimension of gender: that is, how gender is likely to have structured an individual's life. Rather than fine-grained, anthropological accounts uniquely crafted to glimpse this gendering process our method provides only the possibility of tapping into a single, narrow stream of relatively inert data exhaust: names. As such, the classifications we offer are limited[^1]. How gender structures "social space" ([Bourdieu, 1989](https://www.jstor.org/stable/202060?seq=1)) will forever elude our attempts to "reduce human group life to variables and their relations" ([Blumer, 1956](https://www.jstor.org/stable/2088418?seq=1)). Thus, we name what we capture here nomquamgender: a nonsense name made of the French _nom_, Latin _quam_, and English _gender_. Fully translated to English as "name rather than gender", this signifies that what our method can offer is a reflection of the gendering process, a shadow of the way gender structures social space, but only that, and nothing more.
 
-Computationally, this package provides access to name-gender association data that can be used to classify individuals into gendered groups. These gendered groups are best thought of as individuals likely to have been most typically gendered female and individuals likely to have been most typically gendered male. When discussing these classifications in practice one ought to use this language of _gendered female_ and _gendered male_ rather than more traditional sex/gender language[^2]. Classifications themselves are not made by our package, but rather the probability that a name belongs to an individual gendered female, p(gf), is provided. This method is comparable in performance to the most reliable paid name-based gender-classification services ([Van buskirk, 2022](https://www.overleaf.com/project/60ba2dd89d76914725831610)).
+Computationally, this package provides access to name-gender association data that can be used to classify individuals into gendered groups. These gendered groups are best thought of as individuals likely to have been most typically gendered female and individuals likely to have been most typically gendered male. When discussing these classifications in practice one ought to use this language of _gendered female_ and _gendered male_ rather than more traditional sex/gender language[^2]. Classifications themselves are not made by our package, but rather the probability that a name belongs to an individual gendered female, p(gf), is provided. This method is comparable in performance to the most reliable paid name-based gender-classification services ([Van buskirk, 2022](https://larremorelab.github.io/publications/)).
+
+---
 
 ## Installation
 
 ```
 pip install nomquamgender
 ```
+
+---
 
 ## Usage
 
@@ -101,6 +105,21 @@ nqg.annotate(['nomquam','jean'],reference)
 |---:|:--------|:--------|----------:|---------:|---------:|
 |  0 | nomquam | nomquam |         3 |        1 | 0.5      |
 |  1 | jean    | jean    |        34 |  2526377 | 0.523147 |
+
+### Use taxonomy to estimate composition of sample
+
+```python
+sample = list(df.sample(1000, replace = True, weights = df.counts).index)
+composition = nqg.taxonomize(sample)
+```
+
+|                                  |   Low Coverage (c < 10) |   High Coverage |
+|:---------------------------------|------------------------:|----------------:|
+| Gendered (u ≤ 0.10)              |                       2 |             909 |
+| Conditionally Gendered (country) |                       0 |              57 |
+| Conditionally Gendered (decade)  |                       0 |               0 |
+| Weakly Gendered                  |                       0 |              32 |
+| No Data                          |                       0 |               0 |
 
 [^1]: An important aside: The core limitation of using names to reflect the dimension of gender we are interested in is not that classifications are constrained by a "gender binary", but that how gender structures our lives is complex, heterogeneous, variable across time, and interacts with other social forces, whether or not this structuring is best thought of in binary terms. It can be appealing to think that using name-gender associations rather than binary classifications somehow sidesteps an important issue and in some way captures that gender is "non-binary" (e.g. rather than act as if all Taylor's are gendered male, one works with the probability that someone with the name Taylor is gendered male: 0.64). While these continuous associations can be quantitatively useful, they do not offer a conceptual escape hatch to those troubled by binary classifications. Uncertainty does not a non-binary variable make, and in no way do the probabilities we estimate more meaningfully map onto identities, expressions, or lived experiences than their derivative classifications. It's instructive to think of how intentionally taking on a weakly gendered name, such as taylor, leslie, or kim, would (potentially) undermine the gender binary: in our current climate one would not be signaling something non-binary but rather partially obfuscate whatever gendered information names tend to convey. Thoughtfully using binary classifications in scientific research to study the structural dimension of gender need not conflict with our understanding and appreciation of gender in other contexts. As such, name-based gender-classification can be an important part of a broader non-binary orientation, but if one wants to study non-binary gender identities, expressions, or experiences, a different kind of analysis altogether is needed.
 
