@@ -81,6 +81,7 @@ nqg.annotate(['nomquam','jean'])
 
 ```python
 # combine and replace
+alternative = {'nomquam':[3,1,.5], 'jean':[3,1000,1]}
 reference = dict(name_data, **alternative)
 nqg.annotate(['nomquam', 'jean'], reference)
 ```
@@ -110,7 +111,7 @@ nqg.annotate(['nomquam','jean'],reference)
 
 ```python
 sample = list(df.sample(1000, replace = True, weights = df.counts).index)
-composition = nqg.taxonomize(sample)
+nqg.taxonomize(sample)
 ```
 
 |                                  |   Low Coverage (c < 10) |   High Coverage |
