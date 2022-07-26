@@ -11,7 +11,7 @@ Computationally, this package provides access to name-gender association data th
 <!-- omit in toc -->
 ## Contents
 
-- [Install and Import](title)
+- [Install and Import](#install-and-import)
 - [Annotate Names](#annotate-names)
 - [Classify Names](#classify-names)
   - [Example 1](#example-1)
@@ -25,9 +25,9 @@ Computationally, this package provides access to name-gender association data th
 
 ---
 
-## Install and Import<a id="title"></a>
+## Install and Import
 
-```
+```console
 pip install nomquamgender
 ```
 
