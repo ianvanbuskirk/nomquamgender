@@ -72,11 +72,11 @@ model = nqg.NBGC()
 model.tune(example_names)
 ```
 
+max uncertainty threshold set to **0.14**, classifies **86%** of sample
+
 |  threshold  | .3   | .28   | .26   | .24   | .22   | .2   | .18   | .16   | .14   | .12   | .1   | .08   | .06   | .04   | .02   |
 |:-----------|:-----|:------|:------|:------|:------|:-----|:------|:------|:------|:------|:-----|:------|:------|:------|:------|
 | percentage | 94%  | 94%   | 93%   | 91%   | 90%   | 90%  | 90%   | 87%   | **86%**   | 84%   | 83%  | 82%   | 80%   | 76%   | 72%   |
-
-max uncertainty threshold set to **0.14**, classifies **86%** of sample
 
 ```python
 model.classify(example_subset)

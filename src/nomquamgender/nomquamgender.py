@@ -93,8 +93,8 @@ class NBGC():
         percentages[i] = bold_string(percentages[i])
         df = pd.DataFrame(percentages, index = candidates, columns=['percentage'])
         df.index.name = 'threshold'
-        print(df.T)
         print('---')
+        print(df.T.to_string())
 
 
     def tune(self, names, update = True, verbose = True, candidates = np.linspace(.3,.02,15).round(2)):
@@ -131,8 +131,6 @@ class NBGC():
                 threshold = t
                 i += 1
                 
-        if verbose:
-            self._print_thresholds(candidates, classifiable, i)
         if update is True:
             self.threshold = threshold
             print('max uncertainty threshold set to %s, classifies %s%% of sample'%(bold_string(threshold),
@@ -144,6 +142,9 @@ class NBGC():
                                                                    bold_string(threshold),
                                                                    bold_string('%d'%(100*classifiable[i]))
                                                                 ))
+
+        if verbose:
+            self._print_thresholds(candidates, classifiable, i)
 
         
 
