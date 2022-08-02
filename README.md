@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/498118445.svg)](https://zenodo.org/badge/latestdoi/498118445)
+
 <!-- omit in toc -->
 # nomquamgender (nqg)
 
