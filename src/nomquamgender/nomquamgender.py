@@ -93,7 +93,7 @@ class NBGC():
         percentages[i] = bold_string(percentages[i])
         df = pd.DataFrame(percentages, index = candidates, columns=['percentage'])
         df.index.name = 'threshold'
-        print(df.T.to_markdown())
+        print(df.T)
         print('---')
 
 
