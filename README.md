@@ -17,11 +17,11 @@ Computationally, this package provides access to name-gender association data th
   - [Example 1](#example-1)
   - [Example 2](#example-2)
   - [Example 3](#example-3)
+- [Taxonomize Names](#taxonomize-names)
 - [Retrieve Reference Data](#retrieve-reference-data)
 - [Use Additional Data](#use-additional-data)
   - [Combine and Replace](#combine-and-replace)
   - [Combine and Average](#combine-and-average)
-- [Taxonomize Names](#taxonomize-names)
 
 ---
 
@@ -123,6 +123,22 @@ model.classify(example_subset)
 
 ---
 
+## Taxonomize Names
+
+```python
+nqg.taxonomize(nqg.example_names)
+```
+
+|                                  |   Low Coverage (c < 10) |   High Coverage |
+|:---------------------------------|------------------------:|----------------:|
+| Gendered (u ≤ 0.10)              |                      24 |             185 |
+| Conditionally Gendered (country) |                       1 |              19 |
+| Conditionally Gendered (decade)  |                       1 |               0 |
+| Weakly Gendered                  |                       1 |              19 |
+| No Data                          |                       0 |               0 |
+
+---
+
 ## Retrieve Reference Data
 
 ```python
@@ -195,20 +211,6 @@ model.annotate(['nomquam','jean'], as_df=True)
 |---:|:--------|:--------|----------:|---------:|---------:|
 |  0 | nomquam | nomquam |         3 |        1 | 0.4      |
 |  1 | jean    | jean    |        41 |  2526377 | 0.604561 |
-
-## Taxonomize Names
-
-```python
-nqg.taxonomize(nqg.example_names)
-```
-
-|                                  |   Low Coverage (c < 10) |   High Coverage |
-|:---------------------------------|------------------------:|----------------:|
-| Gendered (u ≤ 0.10)              |                      24 |             185 |
-| Conditionally Gendered (country) |                       1 |              19 |
-| Conditionally Gendered (decade)  |                       1 |               0 |
-| Weakly Gendered                  |                       1 |              19 |
-| No Data                          |                       0 |               0 |
 
 [^1]: An important aside: The core conceptual limitation of using names to reflect the dimension of gender we are interested in is not that classifications are constrained by a "gender binary", but that how gender structures our lives is complex, heterogeneous, variable across time, and interacts with other social forces, whether or not this structuring is best thought of in binary terms. It can be appealing to think that using name-gender _associations_ rather than binary _classifications_ somehow sidesteps an important issue and in some way captures that gender is "non-binary" (e.g. rather than act as if all Taylor's are gendered male, one works with the probability that someone with the name Taylor is gendered male: 0.64). While these continuous associations can be quantitatively useful, they do not offer a conceptual escape hatch to those troubled by binary classifications. Uncertainty does not a non-binary variable make, and in no way do the probabilities we estimate more meaningfully map onto identities, expressions, or lived experiences than their derivative classifications. It's instructive to think of how intentionally taking on a weakly gendered name, such as taylor, leslie, or kim, would (potentially) undermine the gender binary: in our current climate one would not be signaling something non-binary but rather partially obfuscate whatever gendered information names tend to convey. Thoughtfully using binary classifications in scientific research to study the structural dimension of gender need not conflict with our understanding and appreciation of gender in other contexts. As such, name-based gender classification can be an important part of a broader non-binary orientation, but if one wants to study non-binary gender identities, expressions, or experiences, a different kind of analysis altogether is needed.
 
