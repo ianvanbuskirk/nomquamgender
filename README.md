@@ -109,11 +109,11 @@ model = nqg.NBGC()
 model.tune(example_names, update=False, candidates=[.45,.35,.25,.15,.05])
 ```
 
+max uncertainty threshold remains **0.1**, threshold of **0.15** would classify **87%** of sample
+
 |  threshold  | .45   | .35   | .25   | .15   | .05   |
 |:-----------|:------|:------|:------|:------|:------|
 | percentage | 98%   | 97%   | 92%   | **87%**   | 78%   |
-
-max uncertainty threshold remains **0.1**, threshold of **0.15** would classify **87%** of sample
 
 ```python
 model.threshold = .45
