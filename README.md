@@ -10,6 +10,17 @@ Conceptually, this method of classification does not reflect gender _identity_, 
 Computationally, this package provides access to name-gender association data that can be used to classify individuals into gendered groups. These gendered groups are best thought of as individuals likely to have been most typically gendered female and individuals likely to have been most typically gendered male. When discussing these classifications in practice one ought to use this language of _gendered female_ and _gendered male_ rather than more traditional sex/gender language[^2]. Classifications themselves are not made by our package, but rather the probability that a name belongs to an individual gendered female, p(gf), is provided. This method is comparable in performance to the most reliable paid name-based gender classification services ([Van buskirk, 2022](https://github.com/ianvanbuskirk/nbgc)).
 
 ---
+To cite this package, please use this bibtex entry:
+```
+@article{van2022open,
+  title={An Open-Source Cultural Consensus Approach to Name-Based Gender Classification},
+  author={Van Buskirk, Ian and Clauset, Aaron and Larremore, Daniel B},
+  journal={arXiv preprint arXiv:2208.01714},
+  note = {\url{https://github.com/ianvanbuskirk/nbgc}},
+  year={2022}
+}
+```
+---
 <!-- omit in toc -->
 ## Contents
 
