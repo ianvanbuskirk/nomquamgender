@@ -82,7 +82,7 @@ example_subset = example_names[:7]
 
 ```python
 model = nqg.NBGC()
-model.tune(example_names)
+model.tune(nqg.example_names)
 ```
 
 max uncertainty threshold set to **0.14**, classifies **86%** of sample
