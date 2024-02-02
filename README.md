@@ -12,12 +12,14 @@ Computationally, this package provides access to name-gender association data th
 ---
 To cite this package, please use this bibtex entry:
 ```
-@article{van2022open,
+@inproceedings{van2023open,
   title={An Open-Source Cultural Consensus Approach to Name-Based Gender Classification},
   author={Van Buskirk, Ian and Clauset, Aaron and Larremore, Daniel B},
-  journal={arXiv preprint arXiv:2208.01714},
+  booktitle={Proceedings of the International AAAI Conference on Web and Social Media},
+  volume={17},
+  pages={866--877},
   note = {\url{https://github.com/ianvanbuskirk/nbgc}},
-  year={2022}
+  year={2023}
 }
 ```
 ---
