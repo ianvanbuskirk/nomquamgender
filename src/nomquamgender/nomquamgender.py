@@ -3,7 +3,7 @@ import json
 import unidecode
 import numpy as np
 import pandas as pd
-
+import string
 
 with importlib.resources.open_text("nomquamgender", "name_data.json") as file:
     name_data = json.load(file)
@@ -158,7 +158,7 @@ class NBGC():
             If a single name is given, it will be converted to a list. 
             Each name will be cast to a string, made lowercase, and stripped of leading and trailing whitespaces. 
             Diacritics will also be removed.
-            The full name will be used if found and if not found the name will be split on spaces and the first substring will be used.
+            The full name will be used if found and if not found the name will be split on spaces and the 1-gram and 2-gram substrings (excluding the last name) will be used.
         as_df (optional): bool
             False by default, if True annotations will be return as a pandas dataframe rather than a list of lists.
         
@@ -172,9 +172,22 @@ class NBGC():
         names = type_check_names(names)
             
         annotations = []
+        remove = ' ' + string.punctuation
+        
         for name in names:
-            parsed = unidecode.unidecode(str(name)).lower().strip()
-            for used in [parsed, parsed.split(' ')[0]]:
+            parsed = [unidecode.unidecode(str(name)).lower().strip(remove)]
+            nameparts = parsed[0].split(' ')
+            
+            if len(nameparts) > 1:
+                # Consider all first names and middle names
+                parsed += [x.strip(remove) for x in nameparts[:-1]]
+            if len(nameparts) > 2:
+                # Consider cheol su, cheol-su and cheolsu
+                parsed += [' '.join([x.strip(remove), y.strip(remove)]) for x, y in zip(nameparts[0:-2], nameparts[1:-1])]
+                parsed += ['-'.join([x.strip(remove), y.strip(remove)]) for x, y in zip(nameparts[0:-2], nameparts[1:-1])]
+                parsed += [''.join([x.strip(remove), y.strip(remove)]) for x, y in zip(nameparts[0:-2], nameparts[1:-1])]
+                
+            for used in parsed:
                 try:
                     info = self.reference[used]
                     break
